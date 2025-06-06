@@ -2,24 +2,36 @@
   display: grid;
 
   grid-template-areas:
-    "header1 header1"
-    "aside header2"
-    "aside main"
-    "footer footer";
+    "header1 header1 header1"
+    "aside header2 aside2"
+    "aside main aside2"
+    "aside footer2 aside2"
+    "footer footer aside2";
 
-  grid-template-columns: 30rem auto;
-  grid-template-rows: 10rem 5rem calc(100vh - 15rem) 10rem;
+  grid-template-columns: 30rem auto 30rem;
+  grid-template-rows: 10rem 5rem calc(100vh - 15rem) 10rem 10rem;
 
   @media (max-width: 1200px) {
     grid-template-areas:
-      "header1"
-      "header2"
-      "main"
-      "footer";
+    "header1 header1"
+    "aside header2"
+    "aside main"
+    "aside footer2"
+    "footer footer";
 
-    grid-template-columns: 1fr;
+  grid-template-columns: 30rem auto;
+  grid-template-rows: 10rem 5rem calc(100vh - 15rem) 10rem 10rem;
+  
+  @media (max-width: 768px) {
+    grid-template-areas:
+    "header1"
+    "main"
+    "footer2";
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    }
   }
-}
+} 
 
 .header1 {
   grid-area: header1;
@@ -35,6 +47,12 @@
   grid-area: aside;
   background-color: darkseagreen;
 
+}
+
+.aside2 {
+  grid-area: aside2;
+  background-color: lightcoral;
+
   @media (max-width: 1200px) {
     display: none;
   }
@@ -43,6 +61,11 @@
 .footer {
   grid-area: footer;
   background-color: darkslategray;
+}
+
+.footer2 {
+  grid-area: footer2;
+  background-color: lightgray;
 }
 
 .grid {
