@@ -1,26 +1,26 @@
 :root {
-  --black: #050505ff;
-  --blue-munsell: #1b9aaaff;
-  --bone: #dddbcbff;
-  --old-lace: #f5f1e3ff;
-  --white: #ffffffff;
+  --black: #0a0e1a;
+  --blue-munsell: #183153;
+  --bone: #bfc9da;
+  --old-lace: #e6eaf3;
+  --white: #fafdff;
 
---primary: #1b9aaaff;
---primary-light: #4cc3d4ff;
---primary-dark: #156f7aff;
---primary-contrast: #ffffffff;
---primary-muted: #a3dbe6ff;
+  --primary: #183153;
+  --primary-light: #35507a;
+  --primary-dark: #101a2b;
+  --primary-contrast: #fafdff;
+  --primary-muted: #6c7ca3;
 
---secondary: #f5f1e3ff;
+  --secondary: #e6eaf3;
 
---gray-50:  #f9fafb;
---gray-100: #f3f4f6;
---gray-200: #e5e7eb;
---gray-300: #d1d5db;
---gray-400: #9ca3af;
---gray-500: #6b7280;
---gray-600: #4b5563;
---gray-700: #374151;
---gray-800: #1f2937;
---gray-900: #111827;
+  --gray-50:  #f5f7fa;
+  --gray-100: #e9edf5;
+  --gray-200: #d3d8e3;
+  --gray-300: #b0b7c9;
+  --gray-400: #8a92a6;
+  --gray-500: #6a728a;
+  --gray-600: #4b526a;
+  --gray-700: #353a4d;
+  --gray-800: #23273a;
+  --gray-900: #151826;
 }
