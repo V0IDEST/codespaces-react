@@ -8,8 +8,8 @@
 }
 
 .div {
-    background-color: var(--primary-light);
-    color: var(--primary-contrast);
+    background-color: var(--primary-contrast);
+    color: var(--primary-light);
     box-shadow: 0 0 1rem var(--primary-color);
     padding: 3rem;
     /* margin: 3rem 5rem; */
