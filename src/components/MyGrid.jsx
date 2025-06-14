@@ -1,10 +1,10 @@
 import styles from "./MyGrid.module.css";
 import { Github, Instagram, Phone, BookOpenCheck } from "lucide-react";
-const Cards = [0,1,2,3,4];
+const Cards = [0, 1, 2, 3, 4];
 export function MyGrid() {
   const randoNumbers = Cards.map(() => Math.floor(Math.random() * 300));
   return (
-      <div className={styles.container}>
+    <div className={styles.container}>
       <header className={styles.header}>
         <BookOpenCheck />
         <h1>Foco, Força, Fé</h1>
@@ -18,13 +18,7 @@ export function MyGrid() {
               ></img>
               <h2>My Text 0</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem hic, deleniti ipsam impedit quod sit, perferendis tenetur, quidem facere in id quaerat cumque sequi corrupti eos earum dolorum repellendus esse?
               </p>
             </div>
           }
