@@ -27,7 +27,7 @@ export function ProductList({ addToCart }) {
     }
     setTimeout(() => {
       fetchProducts();
-    }, 2000);
+    }, 100);
   }, []);
   return (
     <div className={styles.container}>

@@ -5,6 +5,25 @@ export function Product({ product, addToCart }) {
   const [added, setAdded] = useState(false);
   const [qty, setQty] = useState(0);
 
+  const handleAdd = () => {
+    const newQty = qty + 1;
+    setQty(newQty);
+    addToCart(product, newQty);
+    setAdded(true);
+  };
+
+  const handleRemove = () => {
+    if (qty > 1) {
+      const newQty = qty - 1;
+      setQty(newQty);
+      addToCart(product, newQty);
+    } else if (qty === 1) {
+      setQty(0);
+      setAdded(false);
+      addToCart(product, 0);
+    }
+  };
+
   return (
     <div className={styles.productCard}>
       <img
@@ -18,22 +37,20 @@ export function Product({ product, addToCart }) {
         <p className={styles.productPrice}>${product.price}</p>
         {added && (
           <div className={styles.productQty}>
-            <button>-</button>
+            <button onClick={handleRemove}>-</button>
             <p>{qty}</p>
-            <button>+</button>
+            <button onClick={handleAdd}>+</button>
           </div>
         )}
       </div>
-      <button
-        className={styles.productButton}
-        onClick={() => {
-          addToCart(product);
-          setAdded(true);
-          setQty(qty + 1);
-        }}
-      >
-        ADD TO CART
-      </button>
+      {!added && (
+        <button
+          className={styles.productButton}
+          onClick={handleAdd}
+        >
+          ADD TO CART
+        </button>
+      )}
     </div>
   );
 }

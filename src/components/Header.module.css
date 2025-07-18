@@ -1,42 +1,15 @@
 .header {
-  grid-area: header;
-  background-color: rgb(4, 1, 46);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
-}
-
-.header h1 {
-  color: rgb(0, 119, 255);
-  font-family:fantasy;
-  font-size: 5rem;
-  font-weight: bolder;
+  background-color: var(--gray-900);
+  color: var(--primary);
+  padding: 1rem;
   text-align: center;
+  height: 5rem;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  text-align: center;
-  margin-left: 40px;
-
-  @media (max-width: 768px) {
-    font-size: 5rem;
-  }
 }
 
-.header svg {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  margin-right: 20px;
-  margin-left: 20px;
-
-  @media (max-width: 768px) {
-    width: 80px;
-    height: 80px;
-    display: flex;
-  }
+.header a {
+  color: var(--primary);
+  text-decoration: none;
 }
-
