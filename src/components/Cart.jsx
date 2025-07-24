@@ -1,19 +1,82 @@
 import styles from "./Cart.module.css";
+import { useState } from "react";
 
-export function Cart({ cart }) {
+export function Cart({ cart, removeFromCart, addToCart }) {
+  const [qty, setQty] = useState(1);
+  const [added, setAdded] = useState(false);
+  const productMap = {};
+  cart.forEach((product) => {
+    if (productMap[product.id]) {
+      productMap[product.id].qty += 1;
+    } else {
+      productMap[product.id] = { ...product, qty: 1 };
+    }
+  });
+
+  const uniqueProducts = Object.values(productMap);
+
   return (
-    <div className="cart">
-      <h2>Your Cart</h2>
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+    <div className={styles.cart}>
+      <h2>Shopping Cart</h2>
+      {uniqueProducts.length === 0 ? (
+        <p className={styles.empty}>Your cart is empty</p>
       ) : (
-        <ul>
-          {cart.map((item, index) => (
-            <li key={index}>
-              {item.name} - ${item.price.toFixed(2)}
-            </li>
-          ))}
-        </ul>
+        <>
+          <ul className={styles.cartList}>
+            {uniqueProducts.map((product) => (
+              <li key={product.id}>
+                <div className={styles.cartItem}>
+                  <img src={product.thumbnail} alt={product.title} />
+                  <h3>{product.title}</h3>
+                  <button
+                    onClick={() => removeFromCart(product)}
+                    disabled={product.qty === 1}
+                  >
+                    -
+                  </button>
+                  <p>{product.qty}</p>
+                  <button onClick={() => addToCart(product)}>+</button>
+                  <p>${(product.price * product.qty).toFixed(2)}</p>
+                  <button
+                    onClick={() => {
+                      for (let i = 0; i < product.qty; i++) {
+                        removeFromCart(product);
+                      }
+                    }}
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className={styles.checkout}>
+            <h1>Resumo: </h1> <br />
+            <ul>
+              {uniqueProducts.map((product) => (
+                <li
+                  key={product.id}
+                  style={{ fontSize: "2rem", marginBottom: "1rem" }}
+                >
+                  <strong>{product.title}</strong> — {product.qty}x — $
+                  {(product.price * product.qty).toFixed(2)}
+                </li>
+              ))}
+            </ul>
+            <br />
+            <h3>
+              Total: $
+              {uniqueProducts
+                .reduce(
+                  (total, product) => total + product.price * product.qty,
+                  0
+                )
+                .toFixed(2)}
+            </h3>
+            <br />
+            <button>Continuar</button>
+          </div>
+        </>
       )}
     </div>
   );
