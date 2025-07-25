@@ -2,33 +2,22 @@ import "./styles/theme.css";
 import "./styles/global.css";
 import { Header } from "./components/Header";
 import { ProductList } from "./components/ProductList";
-import { useState } from "react";
 import { Cart } from "./components/Cart";
-import { Routes, Route } from "react-router";
+import { Route, Routes } from "react-router";
+import { CartProvider } from "./service/CartContext";
+
 export default function App() {
-  
-  const [cart, setCart] = useState([]);
-  function addToCart(product) {
-    setCart((prevCart) => [...prevCart, product]);
-  }
-  function removeFromCart(product) {
-    setCart((prevCart) => {
-    const index = prevCart.findIndex((item) => item.id === product.id);
-    if (index === -1) return prevCart;
-    const newCart = [...prevCart];
-    newCart.splice(index, 1); // remove apenas o primeiro encontrado
-    newCart.splice(index, 1);
-    return newCart;
-  });
-  }
   return (
+    // React Fragment
     <>
-      <Header cart={cart}/>
-      <Routes>
-        <Route path="/" element={<ProductList addToCart={addToCart} removeFromCart={removeFromCart}/>}/>
-        <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} addToCart={addToCart}/>} />
-      </Routes>
-      
+      <CartProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/cart" element={<Cart />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </CartProvider>
     </>
   );
 }
