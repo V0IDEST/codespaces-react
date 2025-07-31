@@ -1,0 +1,137 @@
+.container {
+  max-width: 1200px;
+  margin: 8rem auto 2rem;
+  padding: 2rem;
+  background: var(--gray-50);
+  min-height: calc(100vh - 10rem);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.header p {
+  color: var(--gray-600);
+  font-size: 1.1rem;
+}
+
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.categoryCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--gray-800);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.categoryCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(45deg, var(--primary), var(--primary-light));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.categoryCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.categoryCard:hover::before {
+  transform: scaleX(1);
+}
+
+.categoryIcon {
+  background: linear-gradient(45deg, var(--primary), var(--primary-light));
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.categoryCard:hover .categoryIcon {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(24, 49, 83, 0.3);
+}
+
+.categoryCard h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+}
+
+.categoryCard p {
+  color: var(--gray-600);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.arrowIcon {
+  color: var(--primary);
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.categoryCard:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    margin-top: 7rem;
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .categoriesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .categoryCard {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoriesGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

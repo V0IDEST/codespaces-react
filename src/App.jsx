@@ -1,16 +1,30 @@
 import "./styles/theme.css";
 import "./styles/global.css";
+import { Header } from "./components/Header";
+import { ProductList } from "./components/ProductList";
+import { Cart } from "./components/Cart";
+import { Route, Routes } from "react-router";
+import { CartProvider } from "./service/CartContext";
+import React from "react";
+import CategoryPage from "./components/CategoryPage";
+import Footer from "./components/Footer";
 
-export default function App() {
+function App() {
   return (
-    <div>
-      <h1>Meu primeiro REACT app</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-        repudiandae ipsa ducimus, enim deserunt minima commodi qui laborum
-        incidunt tempora corporis, quae impedit. Harum maxime nulla, nostrum
-        expedita cumque maiores.
-      </p>
-    </div>
+    <CartProvider>
+      <div className="App">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/categorias" element={<CategoryPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </CartProvider>
   );
 }
+
+export default App;
