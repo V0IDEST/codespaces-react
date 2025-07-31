@@ -5,13 +5,31 @@ import { ProductList } from "./components/ProductList";
 import { Cart } from "./components/Cart";
 import { Route, Routes } from "react-router";
 import { CartProvider } from "./service/CartContext";
+import React, { useState } from "react";
+import SearchBar from "./components/SearchBar";
+import CategoryList from "./components/CategoryList";
 
-export default function App() {
+const categorias = [
+  "Tecnologia", "Jogos", "Educação", "Arte", "Saúde"
+  // ...adicione as categorias do seu projeto
+];
+
+function App() {
+  const [busca, setBusca] = useState("");
+
+  const categoriasFiltradas = categorias.filter(cat =>
+    cat.toLowerCase().includes(busca.toLowerCase())
+  );
+
   return (
-    // React Fragment
     <>
       <CartProvider>
         <Header />
+        <div style={{ maxWidth: "600px", margin: "auto", padding: "40px" }}>
+          <h1 style={{ textAlign: "center", color: "#4f8ef7" }}>Minha App</h1>
+          <SearchBar value={busca} onChange={setBusca} />
+          <CategoryList items={categoriasFiltradas} />
+        </div>
         <Routes>
           <Route path="/" element={<ProductList />} />
           <Route path="/cart" element={<Cart />} />
@@ -21,3 +39,5 @@ export default function App() {
     </>
   );
 }
+
+export default App;

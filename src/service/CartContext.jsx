@@ -10,6 +10,7 @@ export const CartContext = createContext({
   addToCart: () => {},
   updateQtyCart: () => {},
   clearCart: () => {},
+  removeFromCart: () => {},
 });
 
 export function CartProvider({ children }) {
