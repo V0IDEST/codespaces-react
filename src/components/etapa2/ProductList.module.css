@@ -1,0 +1,98 @@
+/* Layout Containers */
+.container {
+    min-height: 100vh;
+    margin-top: 10rem;
+    padding-bottom: 5rem;
+    text-align: center;
+    font-size: 3rem;
+    color: rgb(37, 100, 234);
+    background: linear-gradient(
+        to bottom,
+        rgba(15, 21, 33, 1) 0%,
+        rgba(10, 20, 117, 1) 100%
+    );
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem 3rem 0 3rem;
+    padding-top: 10rem;
+}
+
+.carrinho {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+/* Product Card */
+.productCard {
+    width: 300px;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: rgba(15, 21, 33, 1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.productTitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: rgb(37, 100, 234);
+}
+
+.productDescription {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.productPrice {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: rgb(37, 100, 234);
+}
+
+/* Buttons */
+.productButton {
+    background-color: rgb(37, 100, 234);
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.productButton:hover {
+    background-color: rgba(35, 41, 53, 1);
+    transform: scale(1.05);
+}
+
+/* Search Bar */
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 2rem 0;
+    font-size: 2rem;
+}
+
+.search input,
+.search button {
+    background-color: rgb(17, 31, 80);
+    border: 1px solid rgb(32, 59, 156);
+    color: rgb(37, 100, 234);
+    font-size: 2rem;
+    padding: 0.5rem;
+}

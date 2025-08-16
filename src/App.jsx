@@ -1,43 +1,42 @@
 import "./styles/theme.css";
 import "./styles/global.css";
-import { Header } from "./components/Header";
-import { ProductList } from "./components/ProductList";
-import { Cart } from "./components/Cart";
-import { Route, Routes } from "react-router";
+import { ProductList } from "./components/etapa2/ProductList";
+import { Cart } from "./components/etapa2/Cart";
+import { Route, Routes, useNavigate } from "react-router";
 import { CartProvider } from "./service/CartContext";
-import React, { useState } from "react";
-import SearchBar from "./components/SearchBar";
-import CategoryList from "./components/CategoryList";
+import React from "react";
+import { Estoque } from "./components/etapa2/Estoque";
+import { Header } from "./components/Header";
+import { Login } from "./components/etapa2/Login";
+import { Signup } from "./components/etapa2/Signup";
 
-const categorias = [
-  "Tecnologia", "Jogos", "Educação", "Arte", "Saúde"
-  // ...adicione as categorias do seu projeto
-];
-
-function App() {
-  const [busca, setBusca] = useState("");
-
-  const categoriasFiltradas = categorias.filter(cat =>
-    cat.toLowerCase().includes(busca.toLowerCase())
-  );
-
+function NavigationMenu() {
+  const navigate = useNavigate();
   return (
-    <>
-      <CartProvider>
-        <Header />
-        <div style={{ maxWidth: "600px", margin: "auto", padding: "40px" }}>
-          <h1 style={{ textAlign: "center", color: "#4f8ef7" }}>Minha App</h1>
-          <SearchBar value={busca} onChange={setBusca} />
-          <CategoryList items={categoriasFiltradas} />
-        </div>
-        <Routes>
-          <Route path="/" element={<ProductList />} />
-          <Route path="/cart" element={<Cart />} />
-          {/* Add more routes as needed */}
-        </Routes>
-      </CartProvider>
-    </>
+    <nav className="nav-menu">
+      <button onClick={() => navigate("/")}>Produtos</button>
+      <button onClick={() => navigate("/cart")}>Carrinho</button>
+      <button onClick={() => navigate("/stock")}>Estoque</button>
+      <button onClick={() => navigate("/login")}>Login</button>
+      <button onClick={() => navigate("/signup")}>Cadastro</button>
+    </nav>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <CartProvider>
+      <Header />
+      <NavigationMenu />
+      <main>
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/stock" element={<Estoque />} />
+        </Routes>
+      </main>
+    </CartProvider>
+  );
+}
